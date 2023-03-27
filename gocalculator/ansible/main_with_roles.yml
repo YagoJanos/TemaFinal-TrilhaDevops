@@ -1,0 +1,11 @@
+---
+- name: Calculator and agents
+  hosts: localhost
+  become: true
+
+  roles:
+    - calculator_config
+    - filebeat_config
+    - metricbeat_config
+
+

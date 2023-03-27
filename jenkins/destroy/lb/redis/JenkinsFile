@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    stages {
+        stage('Destroy Redis Network Load Balancer') {
+            steps {
+                withEnv(["AWS_CONFIG_FILE=${env.AWS_CONFIG_FILE}", "AWS_SHARED_CREDENTIALS_FILE=${env.AWS_SHARED_CREDENTIALS_FILE}"]) {
+                    sh """
+                    cd ${env.PROJECT_PATH}/redis/terraform/loadbalancer
+                    terraform init
+                    terraform destroy -auto-approve
+                    """
+                }
+            }
+        }
+    }
+}
+
+

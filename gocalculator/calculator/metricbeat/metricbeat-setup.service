@@ -1,0 +1,14 @@
+[Unit]
+Description=Metricbeat Setup Service
+After=network.target calculator.service
+Requires=calculator.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/ec2-user/calculator/metricbeat/metricbeat-setup.sh
+RemainAfterExit=yes
+ConditionPathExists=!/var/run/metricbeat-setup-success
+
+[Install]
+WantedBy=multi-user.target
+

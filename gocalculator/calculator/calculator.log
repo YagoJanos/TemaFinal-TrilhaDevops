@@ -1,0 +1,120 @@
+2023/03/18 21:28:46 Trying to start server on port 8080
+2023/03/18 21:28:51 Chegou aqui agora
+2023/03/18 21:28:51 Chegou aqui agora
+2023/03/18 21:28:51 Chegou depois de criar a operação
+2023/03/18 21:28:51 Chegou depois de salvar a operação
+2023/03/18 21:28:51 Calculation:  5.000000 + 3.000000 = 8.000000, operation saved successfully
+2023/03/18 21:33:10 Chegou aqui antes de pingar
+2023/03/18 21:36:54 Chegou aqui antes de pingar
+2023/03/18 21:42:24 Chegou aqui antes de pingar
+2023/03/18 21:55:46 Trying to start server on port 8080
+2023/03/18 21:55:49 Chegou aqui agora
+2023/03/18 21:55:49 Chegou aqui agora
+2023/03/18 21:55:49 Chegou depois de criar a operação
+2023/03/18 21:55:56 Chegou aqui agora
+2023/03/18 21:55:56 Chegou aqui agora
+2023/03/18 21:55:56 Chegou depois de criar a operação
+2023/03/18 22:05:10 ping: dial tcp 172.31.16.7:6379: i/o timeout
+2023/03/18 22:05:10 Trying to start server on port 8080
+2023/03/18 22:05:43 Chegou aqui agora
+2023/03/18 22:05:43 Chegou aqui agora
+2023/03/18 22:05:43 Chegou depois de criar a operação
+2023/03/18 22:06:03 Failed to save operation in redis: Redis is not available
+2023/03/18 22:06:03 Chegou depois de salvar a operação
+2023/03/18 22:06:03 Calculation:  1.000000 + 2.000000 = 3.000000, operation could not be saved
+2023/03/18 22:37:24 Trying to start server on port 8080
+2023/03/18 22:37:24 listen tcp :8080: bind: address already in use
+2023/03/18 22:37:29 Trying to start server on port 8080
+2023/03/18 22:37:29 listen tcp :8080: bind: address already in use
+2023/03/18 22:38:01 Trying to start server on port 8080
+2023/03/18 22:38:09 Chegou aqui agora
+2023/03/18 22:38:09 Chegou aqui agora
+2023/03/18 22:38:09 Chegou depois de criar a operação
+2023/03/18 22:43:27 Trying to start server on port 8080
+2023/03/18 22:43:31 Chegou aqui agora
+2023/03/18 22:43:31 Chegou depois de criar a operação
+2023/03/18 23:06:38 Trying to start server on port 8080
+2023/03/18 23:06:42 Chegou aqui agora
+2023/03/18 23:06:42 Chegou depois de criar a operação
+2023/03/18 23:06:46 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+2023/03/18 23:06:46 Chegou depois de salvar a operação
+2023/03/18 23:06:46 Calculation:  5.000000 + 4.000000 = 9.000000, operation could not be saved
+2023/03/18 23:07:08 Trying to start server on port 8080
+2023/03/18 23:20:40 Trying to start server on port 8080
+2023/03/18 23:20:47 Chegou aqui agora
+2023/03/18 23:20:47 Chegou depois de criar a operação
+2023/03/18 23:20:51 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+2023/03/18 23:20:51 Chegou depois de salvar a operação
+2023/03/18 23:20:51 Calculation:  5.000000 + 3.000000 = 8.000000, operation could not be saved
+2023/03/18 23:20:55 Chegou aqui agora
+2023/03/18 23:20:55 Chegou depois de criar a operação
+2023/03/18 23:20:59 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+2023/03/18 23:20:59 Chegou depois de salvar a operação
+2023/03/18 23:20:59 Calculation:  5.000000 + 7.000000 = 12.000000, operation could not be saved
+2023/03/18 23:21:20 Trying to start server on port 8080
+2023/03/18 23:21:22 Chegou aqui agora
+2023/03/18 23:21:22 Chegou depois de criar a operação
+2023/03/18 23:21:22 Chegou depois de salvar a operação
+2023/03/18 23:21:22 Calculation:  5.000000 + 7.000000 = 12.000000, operation saved successfully
+2023/03/18 23:22:32 Trying to start server on port 8080
+2023/03/18 23:22:38 Failed to get operations: dial tcp 172.31.16.7:6379: i/o timeout
+2023/03/18 23:22:45 Failed to get operations: dial tcp 172.31.16.7:6379: i/o timeout
+2023/03/18 23:22:50 Chegou aqui agora
+2023/03/18 23:22:50 Chegou depois de criar a operação
+2023/03/18 23:22:54 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+2023/03/18 23:22:54 Chegou depois de salvar a operação
+2023/03/18 23:22:54 Calculation:  5.000000 + 4.000000 = 9.000000, operation could not be saved
+2023/03/18 23:23:00 Chegou aqui agora
+2023/03/18 23:23:00 Chegou depois de criar a operação
+2023/03/18 23:23:04 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+2023/03/18 23:23:04 Chegou depois de salvar a operação
+2023/03/18 23:23:04 Calculation:  5.000000 + 4.000000 = 9.000000, operation could not be saved
+2023/03/19 08:09:40 Trying to start server on port 8080
+2023/03/19 08:09:51 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+2023/03/19 08:09:51 Calculation:  5.000000 + 3.000000 = 8.000000, operation could not be saved
+2023/03/19 08:14:33 Trying to start server on port 8080
+2023/03/19 08:14:39 Calculation:  5.000000 + 3.000000 = 8.000000, operation saved successfully
+2023/03/19 08:14:42 Calculation:  5.000000 + 3.000000 = 8.000000, operation saved successfully
+2023/03/19 08:14:43 Calculation:  5.000000 + 3.000000 = 8.000000, operation saved successfully
+2023/03/19 08:14:44 Calculation:  5.000000 + 3.000000 = 8.000000, operation saved successfully
+2023/03/19 08:14:45 Calculation:  5.000000 + 3.000000 = 8.000000, operation saved successfully
+2023/03/19 08:14:47 Calculation:  5.000000 + 3.000000 = 8.000000, operation saved successfully
+2023/03/19 08:14:48 Calculation:  5.000000 + 3.000000 = 8.000000, operation saved successfully
+2023/03/19 08:15:36 Calculation:  5.000000 + 3.000000 = 8.000000, operation saved successfully
+2023/03/19 08:15:42 Calculation:  5.000000 div 3.000000 = 1.666667, operation saved successfully
+2023/03/19 08:43:13 Trying to start server on port 8080
+2023/03/21 11:43:44 Trying to start server on port 8080
+2023/03/21 11:43:53 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+2023/03/21 11:43:53 Calculation:  5.000000 + 3.000000 = 8.000000, operation could not be saved
+APP: 2023/03/21 12:43:29 Trying to start server on port 8080
+APP: 2023/03/21 12:49:19 Trying to start server on port 8080
+APP: 2023/03/21 12:49:27 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+APP: 2023/03/21 12:49:27 Calculation:  5.000000 + 3.000000 = 8.000000, operation could not be saved
+APP: 2023/03/21 12:49:36 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+APP: 2023/03/21 12:49:36 Calculation:  5.000000 + 7.000000 = 12.000000, operation could not be saved
+APP: 2023/03/21 12:53:08 Trying to start server on port 8080
+APP: 2023/03/21 12:53:18 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+APP: 2023/03/21 12:53:18 Calculation:  5.000000 + 9.000000 = 14.000000, operation could not be saved
+APP: 2023/03/21 12:53:25 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+APP: 2023/03/21 12:53:25 Calculation:  5.000000 + 10.000000 = 15.000000, operation could not be saved
+APP: 2023/03/22 11:28:56 Trying to start server on port 8080
+APP: 2023/03/22 11:31:48 Trying to start server on port 8080
+APP: 2023/03/22 11:31:58 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+APP: 2023/03/22 11:31:58 Calculation:  5.000000 + 4.000000 = 9.000000, operation could not be saved
+APP: 2023/03/22 12:50:54 Trying to start server on port 8080
+APP: 2023/03/22 12:51:05 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+APP: 2023/03/22 12:51:05 Calculation:  5.000000 + 3.000000 = 8.000000, operation could not be saved
+APP: 2023/03/22 12:51:28 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+APP: 2023/03/22 12:51:28 Calculation:  5.000000 + 3.000000 = 8.000000, operation could not be saved
+APP: 2023/03/22 12:52:23 Trying to start server on port 8080
+APP: 2023/03/22 12:52:49 Trying to start server on port 8080
+APP: 2023/03/22 12:53:00 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+APP: 2023/03/22 12:53:00 Calculation:  5.000000 + 3.000000 = 8.000000, operation could not be saved
+APP: 2023/03/22 12:53:45 Trying to start server on port 8080
+APP: 2023/03/22 12:53:59 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+APP: 2023/03/22 12:53:59 Calculation:  5.000000 + 4.000000 = 9.000000, operation could not be saved
+APP: 2023/03/22 20:46:15 Trying to start server on port 8080
+APP: 2023/03/22 20:46:48 Failed to save operation in redis: dial tcp 172.31.16.7:6379: i/o timeout
+APP: 2023/03/22 20:46:48 Calculation:  1.000000 + 3.000000 = 4.000000, operation could not be saved
+APP: 2023/03/25 21:33:52 Trying to start server on port 8080
+APP: 2023/03/25 21:33:52 listen tcp :8080: bind: address already in use

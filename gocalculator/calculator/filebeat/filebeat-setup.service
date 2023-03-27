@@ -1,0 +1,14 @@
+[Unit]
+Description=Filebeat Setup Service
+After=network.target calculator.service
+Requires=calculator.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/ec2-user/calculator/filebeat/filebeat-setup.sh
+RemainAfterExit=yes
+ConditionPathExists=!/var/run/filebeat-setup-success
+
+[Install]
+WantedBy=multi-user.target
+

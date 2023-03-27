@@ -1,0 +1,9 @@
+---
+- name: Redis, logrotate and Healthcheck
+  hosts: localhost
+  become: true
+
+  roles:
+    - redis_config
+    - logrotate_config
+    - healthcheck_config

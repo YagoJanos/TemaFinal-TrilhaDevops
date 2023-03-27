@@ -1,0 +1,11 @@
+---
+- name: Stack elk
+  hosts: localhost
+  become: true
+
+  roles:
+    - system_config
+    - docker_setup
+    - minikube_setup
+    - elasticsearch_config
+

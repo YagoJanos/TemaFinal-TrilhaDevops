@@ -1,0 +1,15 @@
+[Unit]
+Description=Init go calculator
+After=network.target
+
+[Service]
+User=ec2-user
+Type=simple
+Restart=always
+WorkingDirectory=/home/ec2-user/calculator
+ExecStart=/usr/bin/go run main.go
+Envrinoment="ELASTIC_APM_SERVICE_NAME=calculator"
+Environment="ELASTIC_APM_SERVER_URL=http://172.31.16.8:8200"
+
+[Install]
+WantedBy=multi-user.target

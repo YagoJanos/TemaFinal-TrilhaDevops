@@ -1,0 +1,40 @@
+---
+
+    - name: Download Filebeat 6.8.23 RPM
+      get_url:
+        url: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.8.23-x86_64.rpm
+        dest: /tmp/filebeat-6.8.23-x86_64.rpm
+
+    - name: Install Filebeat 6.8.23
+      yum:
+        name: /tmp/filebeat-6.8.23-x86_64.rpm
+        state: present
+
+    - name: Configure Filebeat
+      copy:
+        src: /home/ec2-user/calculator/filebeat/filebeat.yml
+        dest: /etc/filebeat/filebeat.yml
+        mode: 0644
+
+    - name: Restart and enable Filebeat service
+      systemd:
+        name: filebeat
+        state: restarted
+        daemon_reload: yes
+        enabled: yes
+
+    - name: Create service to execute filebeat setup
+      copy:
+        src: /home/ec2-user/calculator/filebeat/filebeat-setup.service
+        dest: /etc/systemd/system/
+        mode: 0644
+
+    - name: Daemon-reload
+      systemd:
+        daemon_reload: yes
+
+    - name: Enable filebeat-setup.service
+      systemd:
+        name: filebeat-setup.service
+        enabled: yes
+

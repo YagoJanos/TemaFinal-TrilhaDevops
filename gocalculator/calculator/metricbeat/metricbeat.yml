@@ -1,0 +1,30 @@
+metricbeat.modules:
+- module: system
+  metricsets:
+    - cpu
+    - filesystem
+    - memory
+    - network
+    - process
+  enabled: true
+  period: 10s
+  processes: ['.*']
+
+- module: golang
+  metricsets:
+    - heap
+  enabled: true
+  period: 10s
+  hosts: ["localhost:8080"]
+  heap.path: "/debug/vars"
+
+setup.template.settings:
+  index.number_of_shards: 1
+
+output.elasticsearch:
+  hosts: ["http://172.31.16.8:9200"]
+  timeout: 10
+
+setup.kibana:
+  host: "http://172.31.16.8:5601"
+

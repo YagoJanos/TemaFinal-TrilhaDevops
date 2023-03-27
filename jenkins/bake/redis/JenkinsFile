@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+        stage('Bake Redis AMI') {
+            steps {
+                withEnv(["AWS_CONFIG_FILE=/home/yago-janos/.aws/config", "AWS_SHARED_CREDENTIALS_FILE=/home/yago-janos/.aws/credentials"]) {
+                    sh """
+                    	cd ${env.PROJECT_PATH}/redis/packer
+                    	packer init aws-amazonlinux-redis.pkr.hcl
+                    	packer build aws-amazonlinux-redis.pkr.hcl
+                    """
+                }
+            }
+        }
+    }
+}
+
+
+

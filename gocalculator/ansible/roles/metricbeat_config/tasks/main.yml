@@ -1,0 +1,40 @@
+---
+
+    - name: Download Metricbeat 6.8.23 RPM
+      get_url:
+        url: https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.8.23-x86_64.rpm
+        dest: /tmp/metricbeat-6.8.23-x86_64.rpm
+
+    - name: Install Metricbeat 6.8.23
+      yum:
+        name: /tmp/metricbeat-6.8.23-x86_64.rpm
+        state: present
+
+    - name: Configure Metricbeat
+      copy:
+        src: /home/ec2-user/calculator/metricbeat/metricbeat.yml
+        dest: /etc/metricbeat/metricbeat.yml
+        mode: 0644
+
+    - name: Restart and enable Metricbeat service
+      systemd:
+        name: metricbeat
+        state: restarted
+        daemon_reload: yes
+        enabled: yes
+
+    - name: Create service to execute Metricbeat setup
+      copy:
+        src: /home/ec2-user/calculator/metricbeat/metricbeat-setup.service
+        dest: /etc/systemd/system/
+        mode: 0644
+
+    - name: Daemon-reload
+      systemd:
+        daemon_reload: yes
+
+    - name: Enable metricbeat-setup.service
+      systemd:
+        name: metricbeat-setup.service
+        enabled: yes
+

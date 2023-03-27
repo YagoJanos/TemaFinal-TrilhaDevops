@@ -1,0 +1,14 @@
+[Unit]
+Description=Socat Redis Health Check
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/socat TCP-LISTEN:8081,fork,reuseaddr EXEC:"/home/ec2-user/files/redis_health_check.sh"
+Restart=on-failure
+User=ec2-user
+Group=ec2-user
+
+[Install]
+WantedBy=multi-user.target
+

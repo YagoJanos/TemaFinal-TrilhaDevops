@@ -1,0 +1,26 @@
+---
+    - name: Ensure logrotate is installed
+      yum:
+        name: logrotate
+        state: present
+
+    - name: Create Redis logrotate configuration
+      copy:
+        content: |
+          /var/log/redis/*.log {
+            daily
+            rotate 7
+            compress
+            delaycompress
+            missingok
+            notifempty
+            create 640 redis redis
+            postrotate
+              /bin/kill -USR1 `cat /var/run/redis/redis.pid 2>/dev/null` 2>/dev/null || true
+            endscript
+          }
+        dest: /etc/logrotate.d/redis
+        owner: root
+        group: root
+        mode: 0644
+

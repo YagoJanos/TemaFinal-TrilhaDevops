@@ -1,0 +1,25 @@
+---
+    - name: Instalação do Docker
+      yum:
+        name: docker
+        state: latest
+        update_cache: true
+
+    - name: Adicionando usuário ao grupo Docker
+      user:
+        name: ec2-user
+        append: yes
+        groups: docker
+
+    - name: Atualizar grupo de processos para o grupo Docker
+      command: newgrp docker
+
+    - name: Iniciar o serviço do Docker
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Adicionando permissões ao docker
+      shell: chmod 777 /var/run/docker.sock
+

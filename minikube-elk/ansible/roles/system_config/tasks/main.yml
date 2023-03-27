@@ -1,0 +1,9 @@
+---
+    - name: Adicionar vm.max_map_count ao /etc/sysctl.conf
+      lineinfile:
+        path: /etc/sysctl.conf
+        line: 'vm.max_map_count=262144'
+
+    - name: Reconfigar as configurações do sysctl -p
+      shell: sysctl -p
+

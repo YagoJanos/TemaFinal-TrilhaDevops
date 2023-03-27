@@ -1,0 +1,27 @@
+---
+    - name: Instalar o repositório EPEL
+      yum:
+        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        state: present
+
+    - name: Upgrade all packages
+      yum:
+        name: '*'
+        state: latest
+
+    - name:  Install redis 6
+      shell: amazon-linux-extras install redis6
+
+    - name: Alterar as configurações do serviço Redis
+      template:
+        src: /home/ec2-user/files/redis.conf
+        dest: /etc/redis/redis.conf
+        owner: redis
+        group: redis
+        mode: '644'
+
+    - name: Enable service redis
+      systemd:
+        name: redis
+        state: started
+        enabled: yes

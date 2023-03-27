@@ -1,0 +1,19 @@
+[Unit]
+Description=Kickoff Minikube Cluster
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/bin/sleep 7
+ExecStartPre=-/usr/bin/docker system prune -af --volumes
+ExecStart=/home/ec2-user/files/minikube/minikube-start-and-apply.sh
+RemainAfterExit=yes
+ExecStop=/usr/local/bin/minikube stop
+StandardOutput=journal
+User=ec2-user
+Group=ec2-user
+
+[Install]
+WantedBy=multi-user.target
+

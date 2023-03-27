@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    stages {
+        stage('Bake Go Calculator AMI') {
+            steps {
+                withEnv(["AWS_CONFIG_FILE=/home/yago-janos/.aws/config", "AWS_SHARED_CREDENTIALS_FILE=/home/yago-janos/.aws/credentials"]) {
+                    sh """
+                    	cd ${env.PROJECT_PATH}/gocalculator/packer
+                        packer init aws-amazonlinux-go.pkr.hcl
+                  	packer build aws-amazonlinux-go.pkr.hcl
+                    """
+                }
+            }
+        }
+    }
+}
+

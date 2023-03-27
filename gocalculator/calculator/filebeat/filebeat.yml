@@ -1,0 +1,25 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/*.log
+    - /var/log/messages
+    - /var/log/secure
+    - /home/ec2-user/calculator/apm.log
+    - /home/ec2-user/calculator/calculator.log
+
+filebeat.modules:
+- module: system
+  syslog:
+    enabled: true
+
+setup.template.settings:
+  index.number_of_shards: 1
+
+output.elasticsearch:
+  hosts: ["http://172.31.16.8:9200"]
+  timeout: 10
+
+setup.kibana:
+  host: "http://172.31.16.8:5601"
+

@@ -1,0 +1,51 @@
+---
+    - name: Instalação do Minikube
+      get_url:
+        url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        dest: "/usr/local/bin/minikube"
+        mode: 'a+x'
+
+    - name: Habilitar o encaminhamento de pacotes entre interfaces
+      shell: sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
+
+    - name: Aplicar alterações no kernel
+      shell: sysctl --system
+
+    - name: Copiar Minikube port forward script
+      copy:
+        src: /home/ec2-user/files/minikube/minikube-port-forward.sh
+        dest: /usr/local/bin/minikube-port-forward.sh
+        mode: 0755
+
+    - name: Copiar Minikube port forward service
+      copy:
+        src: /home/ec2-user/files/minikube/minikube-port-forward.service
+        dest: /etc/systemd/system/minikube-port-forward.service
+
+    - name: Recarregar systemd configuration
+      systemd:
+        daemon_reload: yes
+
+    - name: Habilitar Minikube port forward service
+      systemd:
+        name: minikube-port-forward
+        enabled: yes
+
+    - name: Minikube start
+      shell: minikube start --cpus=2 --memory=3700mb --static-ip 192.168.49.2
+      become_user: ec2-user
+
+    - name: Copiar Minikube start service
+      copy:
+        src: /home/ec2-user/files/minikube/minikube-start-and-apply.service
+        dest: /etc/systemd/system/minikube-start-and-apply.service
+
+    - name: Recarregar systemd configuration
+      systemd:
+        daemon_reload: yes
+
+    - name: Habilitar Minikube start service
+      systemd:
+        name: minikube-start-and-apply
+        enabled: yes
+

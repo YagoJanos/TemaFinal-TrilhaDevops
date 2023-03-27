@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    stages {
+        stage('Bake ELK Minikube AMI') {
+            steps {
+                withEnv(["AWS_CONFIG_FILE=/home/yago-janos/.aws/config", "AWS_SHARED_CREDENTIALS_FILE=/home/yago-janos/.aws/credentials"]) {
+                    sh """
+                    	cd ${env.PROJECT_PATH}/minikube-elk/packer
+               		packer init aws-amazonlinux-elk.pkr.hcl
+                	packer build aws-amazonlinux-elk.pkr.hcl
+                    """
+                }
+            }
+        }
+    }
+}
+
+

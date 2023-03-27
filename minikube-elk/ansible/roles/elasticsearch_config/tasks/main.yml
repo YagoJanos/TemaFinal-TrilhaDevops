@@ -1,0 +1,7 @@
+---
+    - name: Criar diretório para o persistent volume do elasticsearch
+      file:
+        path: /mnt/elasticsearch-data
+        state: directory
+        mode: '0755'
+
