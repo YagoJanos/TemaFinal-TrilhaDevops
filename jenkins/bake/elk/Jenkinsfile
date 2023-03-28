@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Bake ELK Minikube AMI') {
             steps {
-                withEnv(["AWS_CONFIG_FILE=/home/yago-janos/.aws/config", "AWS_SHARED_CREDENTIALS_FILE=/home/yago-janos/.aws/credentials"]) {
+                withEnv(["AWS_CONFIG_FILE=${env.AWS_CONFIG_FILE}", "AWS_SHARED_CREDENTIALS_FILE=${env.AWS_SHARED_CREDENTIALS_FILE}"]) {
                     sh """
                     	cd ${env.PROJECT_PATH}/minikube-elk/packer
                		packer init aws-amazonlinux-elk.pkr.hcl

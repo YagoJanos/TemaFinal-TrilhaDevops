@@ -4,13 +4,19 @@
 
 1. Clone esse repositório.
 
-2. Nos arquivos Terraform (.tf), preencha o campo ** "default" ** no bloco ** variable "SECURITY_GROUP" ** com a id do seu security group, exceto no arquivo do network load balancer pois o mesmo não se associa a um security group.
+2. Crie uma keypair no console da AWS.
 
-3. Nos arquivos Terraform (.tf), preencha o campo ** "keyname" ** nos blocos ** "aws_instance" ** e ** "aws_launch_configuration" ** com a sua key da AWS (arquivo .pem).
+3. Instale o AWS CLI e digite no terminal ``` aws configue ```, digite suas credenciais e escolha a região east-1.
 
-2. Certifique-se de ter o Jenkins, o Packer, o Terraform e o AWS CLI instalados em sua máquina.
+4. Nos arquivos Packer (.pkr.hcl), preencha o campo profile com o nome de sua credencial aws presente em ~/.aws/credentials e preencha ssh_keypair_name e ssh_private_key_file com o nome da sua keypair e a localização dela respectivamente.
 
-3. Entre no Jenkins, vá em "Manage Jenkins" -> "Configure System" -> "Global Properties", marque "Environment variables" e adicione as seguintes variáveis:
+5. Nos arquivos Terraform (.tf), preencha o campo **"default"** no bloco **variable "SECURITY_GROUP"** com a id do seu security group, exceto no arquivo do network load balancer pois o mesmo não se associa a um security group.
+
+6. Nos arquivos Terraform (.tf), preencha o campo **"keyname"** nos blocos **"aws_instance"** e **"aws_launch_configuration"** com a sua key da AWS (arquivo .pem).
+
+7. Certifique-se de ter o Jenkins, o Packer, o Terraform e o AWS CLI instalados em sua máquina.
+
+8. Entre no Jenkins, vá em "Manage Jenkins" -> "Configure System" -> "Global Properties", marque "Environment variables" e adicione as seguintes variáveis:
 
 * Name = AWS_CONFIG_FILE  |  Value = caminho absoluto até o seu arquivo config presente na pasta .aws
 
@@ -18,7 +24,7 @@
 
 * Name = PROJECT_PATH  |  Value = caminho absoluto até o repositório clonado
 
-4. Crie Jobs no Jenkins:
+9. Crie Jobs no Jenkins:
 
 * "Create a job" -> "Pipeline" -> Vá para a seção "Pipeline" -> Escolha "Pipeline Script from SCM"
 
@@ -48,7 +54,7 @@
 
 ## Execução
 
-1. Primeiro executo o job ** Deploy Redis LB ** para criar o *** Network Load Balancer *** do Redis.
+1. Primeiro executo o job **Deploy Redis LB** para criar o ***Network Load Balancer*** do Redis.
 
 2. Agora pegue o DNS obtido como output e insira no arquivo main.go no campo Addr mantendo a porta 6379:
 
@@ -62,9 +68,9 @@ redisClient = redis.NewClient(&redis.Options{
         })
 ```
 
-3. Execute o job para criar o *** Classic Load Balancer *** da calculadora: ** Deploy calculator LB. ** Esse dns será usado posteriormente para enviar requisições de cálculos para a calculadora.
+3. Execute o job para criar o ***Classic Load Balancer*** da calculadora: **Deploy calculator LB**. Esse dns será usado posteriormente para enviar requisições de cálculos para a calculadora.
 
-4. Execute os jobs para fazer os bakes das imagens: ** Bake calculator AMI, Bake Redis AMI, Bake ELK AMI. **
+4. Execute os jobs para fazer os bakes das imagens: **Bake calculator AMI, Bake Redis AMI, Bake ELK AMI.**
 
 5. Execute o restanto dos jobs de Deploy.
 
@@ -82,23 +88,25 @@ redisClient = redis.NewClient(&redis.Options{
 | Multiplicação | DNS-LoadBalancer-Calculadora:8080/2/\*/4          |
 | Histórico     | DNS-LoadBalancer-Calculadora:8080/history        |
 
-2. Para acessar o Kibana acesse: * IPV4-Instancia-ELK:5601 *
+2. Para acessar o Kibana acesse: *IPV4-Instancia-ELK:5601*
 
 ## Funcionamento
 
 Esse tema foi construído da seguinte forma:
 
-### *** Calculadora ***:
+### ***Calculadora***:
 
 * A calculadora utiliza a biblioteca Gorilla Mux que fornece um roteador que é usado para criar rotas para manipular solicitações HTTP de entrada.
 
 * Há um Autoscaling Group que garante que sempre haja uma instância da calculadora funcionando.
 
-* Associado ao Autoscaling Group há um Classic Load Balancer que faz HealthCheck em ** :8080/health **, uma rota implementada na calculadora.
+* Associado ao Autoscaling Group há um Classic Load Balancer que faz HealthCheck em **:8080/health**, uma rota implementada na calculadora.
 
-* A calculadora foi configurada para registrar logs de operações e erros em um arquivo chamado ** calculator.log **.
+* A calculadora foi configurada para registrar logs de operações e erros em um arquivo chamado **calculator.log** (que será enviado pelo Filebeat ao Elasticsearch).
 
 * A calculadora conta com um cliente apm que envia tracing para um APM-Server, dessa forma contemplando o pilar de Tracing da Observabilidade.
+
+* A calculadora foi configurada para registrar logs de operações e erros do cliente apm em um arquivo chamado **apm.log** (que será enviado pelo Filebeat ao Elasticsearch).
 
 * A calculadora conta com um cliente redis que envia um registro de cada operação para o servidor Redis, sendo também capaz de recuperar o histórico das operações.
 
@@ -110,13 +118,13 @@ Esse tema foi construído da seguinte forma:
 ``` filebeat setup -E setup.kibana.host=http://172.31.16.8:5601 -E output.elasticsearch.hosts=["http://172.31.16.8:9200"] ```
 ``` metricbeat setup -E setup.kibana.host=http://172.31.16.8:5601 -E output.elasticsearch.hosts=["http://172.31.16.8:9200"] ```
 
-Esses dois comandos são executados uma vez a cada 10 segundos até que sejam bem sucedidos pela primeira vez, depois nunca mais sendo executados até o fim do ciclo de vida da instância EC2. Isso é garantido por serviços do systemd chamados ** metricbeat-setup.service ** e ** filebeat-setup.service ** em conjunto com os bash scripts ** metricbeat-setup.sh ** e ** filebeat-setup.sh **.
+Esses dois comandos são executados uma vez a cada 10 segundos até que sejam bem sucedidos pela primeira vez, depois nunca mais sendo executados até o fim do ciclo de vida da instância EC2. Isso é garantido por serviços do systemd chamados **metricbeat-setup.service** e **filebeat-setup.service** em conjunto com os bash scripts **metricbeat-setup.sh** e **filebeat-setup.sh**.
 
 Obs: 172.31.16.8 é o ipv4 privado fixado para a instância do ELK.
 
-### *** Redis ***:
+### ***Redis***:
 
-* A instância Redis foi configurada por meio do arquivo redis.conf para receber requisições de todos os hosts, por isso é importante que o security group dessa instância possua inbound rules permitindo requisições apenas do security group da calculadora.
+* **Importante**: A instância Redis foi configurada por meio do arquivo redis.conf para receber requisições de todos os hosts, por isso é importante que o security group dessa instância possua inbound rules permitindo requisições apenas do security group da calculadora. Há um malware na internet que fica ouvindo instâncias com a porta 6379 (porta do redis) abertas a fim de criar tarefas maliciosas no cron.
 
 * O serviço do Redis foi habilitado para iniciar com o boot do sistema.
 
@@ -132,7 +140,7 @@ Obs: 172.31.16.8 é o ipv4 privado fixado para a instância do ELK.
 
 * Há um Network Load Balancer associado ao Redis. A escolha do Network Load Balancer se deu pelo fato de outros tipos de load balancer não serem capazes de surportar o protocolo RESP utilizado pelo Redis.
 
-### *** ELK ***:
+### ***ELK***:
 
 * Há um minikube executando em uma instância EC2.
 

@@ -60,7 +60,7 @@ resource "aws_launch_configuration" "lc-go" {
   image_id      = data.aws_ami.go_custom_ami.id
 }
 
-resource "aws_autoscaling_group" "asg-yagoquaranta" {
+resource "aws_autoscaling_group" "asg-go" {
   max_size         = 1
   min_size         = 1
   desired_capacity = 1

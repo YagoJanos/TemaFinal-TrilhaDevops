@@ -12,6 +12,10 @@ provider "aws" {
   region  = "us-east-1"
 }
 
+
+
+
+
 data "aws_vpc" "main" {
   default = true
 }
@@ -24,6 +28,11 @@ variable "THEME_TAGS" {
     Project          = "TemaFinalDevops"
   }
 }
+
+
+
+
+
 
 resource "aws_lb" "redis" {
   name               = "redis"
@@ -64,6 +73,8 @@ resource "aws_lb_target_group" "redis" {
 
   tags = var.THEME_TAGS
 }
+
+
 
 output "nlb_dns_name" {
   value = aws_lb.redis.dns_name
