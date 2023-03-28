@@ -14,7 +14,7 @@
 
 6. Nos arquivos Terraform (.tf), preencha o campo **"keyname"** nos blocos **"aws_instance"** e **"aws_launch_configuration"** com a sua key da AWS (arquivo .pem).
 
-7. Certifique-se de ter o Jenkins, o Packer, o Terraform e o AWS CLI instalados em sua máquina.
+7. Certifique-se de ter o Jenkins, o Packer e o Terraform instalados em sua máquina.
 
 8. Entre no Jenkins, vá em "Manage Jenkins" -> "Configure System" -> "Global Properties", marque "Environment variables" e adicione as seguintes variáveis:
 
@@ -68,6 +68,7 @@ redisClient = redis.NewClient(&redis.Options{
         })
 ```
 
+
 3. Execute o job para criar o ***Classic Load Balancer*** da calculadora: **Deploy calculator LB**. Esse dns será usado posteriormente para enviar requisições de cálculos para a calculadora.
 
 4. Execute os jobs para fazer os bakes das imagens: **Bake calculator AMI, Bake Redis AMI, Bake ELK AMI.**
@@ -88,7 +89,7 @@ redisClient = redis.NewClient(&redis.Options{
 | Multiplicação | DNS-LoadBalancer-Calculadora:8080/2/\*/4          |
 | Histórico     | DNS-LoadBalancer-Calculadora:8080/history        |
 
-2. Para acessar o Kibana acesse: *IPV4-Instancia-ELK:5601*
+2. Para acessar o Kibana acesse: ***IPV4-Instancia-ELK:5601***
 
 ## Funcionamento
 
