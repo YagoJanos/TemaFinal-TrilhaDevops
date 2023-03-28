@@ -4,7 +4,7 @@
 
 1. Clone esse repositório.
 
-2. Nos arquivos Terraform (.tf), preencha o campo ** "default" ** no bloco ** variable "SECURITY_GROUP" ** com a id do seu security group, exceto no arquivo do network load balancer pois o mesmo não se associa a um security group.
+2. Nos arquivos Terraform (.tf), preencha o campo **default** no bloco ** variable "SECURITY_GROUP" ** com a id do seu security group, exceto no arquivo do network load balancer pois o mesmo não se associa a um security group.
 
 3. Nos arquivos Terraform (.tf), preencha o campo ** "keyname" ** nos blocos ** "aws_instance" ** e ** "aws_launch_configuration" ** com a sua key da AWS (arquivo .pem).
 
