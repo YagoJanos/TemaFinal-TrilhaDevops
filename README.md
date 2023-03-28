@@ -26,11 +26,15 @@
 
 9. Crie Jobs no Jenkins:
 
-* "Create a job" -> "Pipeline" -> Vá para a seção "Pipeline" -> Escolha "Pipeline Script from SCM"
+* "Create a job" -> Digite o nome do job no campo "Enter an item name" -> clique em  "Pipeline -> Vá para a seção "Pipeline" -> Escolha "Pipeline Script from SCM"
 
-* Em SCM escolha "Git"
+* Em **SCM** escolha **"Git"**
 
-* Em Script Path você deverá colocar o caminho do Jenkinsfile para o job específico.
+* Em **Repository URL** você deve digitar: **https://github.com/YagoJanos/TemaFinal-TrilhaDevops.git**
+
+* Em **Branch Specifier** você deve digitar **/\*main**
+
+* Em **Script Path** você deverá colocar o caminho do Jenkinsfile para o job específico.
 
 ### A seguir, sugestões de nomes para os jobs e os caminhos respectivos de cada Jenkinsfile:
 
