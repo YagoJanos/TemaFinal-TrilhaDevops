@@ -1,5 +1,7 @@
 #!/bin/bash
-for file in destroy/*/*/JenkinsFile; do
-    cat ./TerraformDestroy >> "$file"
+
+find . -type f -name "JenkinsFile" | while read file; do
+    dir=$(dirname "$file")
+    mv "$file" "${dir}/Jenkinsfile"
 done
 

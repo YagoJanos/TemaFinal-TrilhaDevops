@@ -1,0 +1,19 @@
+bake calculator AMI -> jenkins/bake/calc/Jenkinsfile
+bake redis AMI -> jenkins/bake/redis/Jenkinsfile
+bake ELK AMI -> jenkins/bake/elk/Jenkinsfile
+
+deploy calculator instance -> jenkins/deploy/instance/calc/Jenkinsfile
+deploy calculator lb -> jenkins/deploy/lb/calc/Jenkinsfile
+
+deploy redis instance -> jenkins/deploy/instance/redis/Jenkinsfile
+deploy redis lb -> jenkins/deploy/lb/redis/Jenkinsfile
+
+deploy elk instance -> jenkins/deploy/instance/elk/Jenkinsfile
+
+destroy calculator instance -> jenkins/destroy/instance/calc/Jenkinsfile
+destroy calculator lb -> jenkins/destroy/lb/calc/Jenkinsfile
+
+destroy redis instance -> jenkins/destroy/instance/redis/Jenkinsfile
+destroy redis lb -> jenkins/destroy/lb/redis/Jenkinsfile
+
+destroy elk instance -> jenkins/destroy/instance/elk/Jenkinsfile

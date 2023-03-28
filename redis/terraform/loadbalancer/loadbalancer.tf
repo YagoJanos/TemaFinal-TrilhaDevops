@@ -65,3 +65,9 @@ resource "aws_lb_target_group" "redis" {
   tags = var.THEME_TAGS
 }
 
+output "nlb_dns_name" {
+  value = aws_lb.redis.dns_name
+  description = "The DNS name of the Network Load Balancer"
+}
+
+
