@@ -7,6 +7,18 @@ terraform {
   }
 }
 
+
+
+provider "aws" {
+  profile = ""
+  region  = "us-east-1"
+}
+
+
+
+
+
+
 variable "THEME_TAGS" {
   type    = object({})
   default = {
@@ -16,10 +28,6 @@ variable "THEME_TAGS" {
   }
 }
 
-
-
-
-
 variable "ZONES" {
   default = ["us-east-1a", "us-east-1b"]
 }
@@ -27,11 +35,6 @@ variable "ZONES" {
 variable "SECURITY_GROUP" {
   type    = string
   default = "sg-01141db0a06fa5ca7"
-}
-
-provider "aws" {
-  profile = "342678933335_JTsAccess"
-  region  = "us-east-1"
 }
 
 data "aws_elb" "elb-go" {

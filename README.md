@@ -1,5 +1,7 @@
 # Tema Final de Devops
 
+## Vídeo do tema em execução: https://youtu.be/P_LzR1Qb-e4
+
 ## Preparação
 
 1. Clone esse repositório.
@@ -16,7 +18,11 @@
 
 7. Certifique-se de ter o Jenkins, o Packer e o Terraform instalados em sua máquina.
 
-8. Entre no Jenkins, vá em "Manage Jenkins" -> "Configure System" -> "Global Properties", marque "Environment variables" e adicione as seguintes variáveis:
+8. Adicione o jenkins ao grupo do seu usuário com o comando: ``` sudo usermod -a -G <group_name> jenkins ``` 
+
+9. Digite o comando para permitir que o Jenkins tenha acesso a sua keypair: ``` chmod 640 /path/to/your/keypairfile.pem ```
+
+10. Entre no Jenkins, vá em "Manage Jenkins" -> "Configure System" -> "Global Properties", marque "Environment variables" e adicione as seguintes variáveis:
 
 * Name = AWS_CONFIG_FILE  |  Value = caminho absoluto até o seu arquivo config presente na pasta .aws
 
@@ -24,7 +30,7 @@
 
 * Name = PROJECT_PATH  |  Value = caminho absoluto até o repositório clonado
 
-9. Crie Jobs no Jenkins:
+11. Crie Jobs no Jenkins:
 
 * "Create a job" -> Digite o nome do job no campo "Enter an item name" -> clique em  "Pipeline -> Vá para a seção "Pipeline" -> Escolha "Pipeline Script from SCM"
 

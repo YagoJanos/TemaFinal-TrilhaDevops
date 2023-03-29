@@ -7,6 +7,18 @@ terraform {
   }
 }
 
+
+provider "aws" {
+  profile = ""
+  region  = "us-east-1"
+}
+
+
+
+
+
+
+
 variable "THEME_TAGS" {
   type    = object({})
   default = {
@@ -21,13 +33,23 @@ variable "SECURITY_GROUP" {
   default = "sg-01141db0a06fa5ca7"
 }
 
-provider "aws" {
-  profile = "342678933335_JTsAccess"
-  region  = "us-east-1"
+data "aws_ami" "elk_custom_ami" {
+  owners = ["self"]
+
+  filter {
+    name   = "name"
+    values = ["elk-linux-aws"]
+  }
 }
 
+
+
+
+
+
+
 resource "aws_instance" "elk" {
-  ami             = "ami-0d00dd069dbb28f77"
+  ami             = data.aws_ami.elk_custom_ami.id
   instance_type   = "t2.medium"
   key_name        = "YagoJanosJT"
   security_groups = [var.SECURITY_GROUP]

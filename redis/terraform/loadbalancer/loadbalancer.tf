@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  profile = "342678933335_JTsAccess"
+  profile = ""
   region  = "us-east-1"
 }
 
@@ -57,7 +57,7 @@ resource "aws_lb_listener" "redis" {
 }
 
 resource "aws_lb_target_group" "redis" {
-  name       = "redis-tg"
+  name              = "redis-tg"
   port              = 6379
   protocol          = "TCP"
   target_type       = "instance"
@@ -77,7 +77,7 @@ resource "aws_lb_target_group" "redis" {
 
 
 output "nlb_dns_name" {
-  value = aws_lb.redis.dns_name
+  value       = aws_lb.redis.dns_name
   description = "The DNS name of the Network Load Balancer"
 }
 

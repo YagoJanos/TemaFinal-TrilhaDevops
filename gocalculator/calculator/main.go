@@ -78,7 +78,7 @@ func main() {
 
 
 	redisClient = redis.NewClient(&redis.Options{
-		Addr: "redis-b1b1cbb75d29dbd4.elb.us-east-1.amazonaws.com:6379",
+		Addr: "redis-42b67cd5c7f84db5.elb.us-east-1.amazonaws.com:6379",
 		DB:   0,
 		DialTimeout: 1 * time.Second,
 		ReadTimeout: 5 * time.Second,

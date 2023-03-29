@@ -13,7 +13,7 @@ source "amazon-ebs" "amazonlinux" {
   region        = "us-east-1"
   source_ami    = "ami-0b5eea76982371e91"
   
-  profile = "342678933335_JTsAccess"
+  profile = ""
   ssh_username         = "ec2-user"
   ssh_keypair_name     = "YagoJanosJT"
   ssh_private_key_file = "/home/yago-janos/YagoJanosJT.pem"

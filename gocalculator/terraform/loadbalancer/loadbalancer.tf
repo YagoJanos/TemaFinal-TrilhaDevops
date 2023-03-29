@@ -7,6 +7,16 @@ terraform {
   }
 }
 
+
+provider "aws" {
+  profile = ""
+  region  = "us-east-1"
+}
+
+
+
+
+
 variable "THEME_TAGS" {
   type    = object({})
   default = {
@@ -25,10 +35,10 @@ variable "SECURITY_GROUP" {
   default = "sg-01141db0a06fa5ca7"
 }
 
-provider "aws" {
-  profile = "342678933335_JTsAccess"
-  region  = "us-east-1"
-}
+
+
+
+
 
 resource "aws_elb" "elb-go" {
   security_groups = [var.SECURITY_GROUP]

@@ -7,6 +7,12 @@ terraform {
   }
 }
 
+provider "aws" {
+  profile    = ""
+  region     = "us-east-1"
+}
+
+
 
 
 
@@ -32,14 +38,6 @@ data "aws_ami" "redis_custom_ami" {
   }
 }
 
-
-
-
-
-provider "aws" {
-  profile    = "342678933335_JTsAccess"
-  region     = "us-east-1"
-}
 
 
 
